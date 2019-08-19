@@ -1,22 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./components/AppConteiner";
+import App from "./components/App";
 import { Provider, connect } from "react-redux";
 import rootReducer from "./store/reducers";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-import { watchFetchDog } from "./store/saga/saga";
-import logger from "redux-logger";
+import { watchLogUser } from "./store/saga/user/saga";
 
 import "./styles.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger));
-sagaMiddleware.run(watchFetchDog);
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(watchLogUser);
 
 const ConnectedApp = connect(state => {
-  console.log(state, "State");
   return state;
 })(App);
 

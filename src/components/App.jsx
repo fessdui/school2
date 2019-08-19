@@ -1,27 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import User from "./user/User";
+import LoginForm from "./user/components/login/components/LoginForm";
 
-function App({ fetchDog, dispatch, loading, url, error }) {
-  const getImage = (loading, url, error) => {
-    let result = "";
-    if (loading) {
-      result = <p>Loading...</p>;
-    } else if (error) {
-      result = <p>Error, try again</p>;
-    } else if (url) {
-      result = (
-        <p>
-          <img src={url} alt="test" />
-        </p>
-      );
-    }
-    return result;
-  };
-
+function App(props) {
+  console.info(props, "PROPS IN APP");
   return (
     <div>
-      <button onClick={() => dispatch(fetchDog())}>Show Dog</button>
-      {getImage(loading, url, error)}
+      <LoginForm {...props} />
+      <User {...props} />
     </div>
   );
 }
