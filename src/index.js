@@ -5,7 +5,7 @@ import { Provider, connect } from "react-redux";
 import rootReducer from "./store/reducers";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-import { watchLogUser } from "./store/saga/user/saga";
+import { rootSaga } from "./store/saga/saga";
 
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -14,7 +14,7 @@ import "bootstrap/dist/js/bootstrap.js";
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
-sagaMiddleware.run(watchLogUser);
+sagaMiddleware.run(rootSaga);
 
 const ConnectedApp = connect(state => {
   return state;

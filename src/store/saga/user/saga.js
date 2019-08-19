@@ -1,18 +1,11 @@
-import { takeEvery } from "redux-saga";
-import { put, call, take } from "redux-saga/effects";
+import { put, call } from "redux-saga/effects";
 import {
   fetchUser,
   requestUserSuccess,
-  requestUserError,
-  LOGIN_USER
+  requestUserError
 } from "./../../redux/user/actions";
 
-// Sagas
-export function* watchLogUser() {
-  yield takeEvery(LOGIN_USER, fetchLoginAsync);
-}
-
-function* fetchLoginAsync(action) {
+export function* fetchLoginAsync(action) {
   let { email, password } = action.payload;
   console.log(email, password, "email");
   try {

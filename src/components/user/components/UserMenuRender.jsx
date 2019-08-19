@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import LoginFormRender from "./login/components/LoginFormRender";
 
+import "./styles.css";
+
 function UserRender(props) {
   const { loading, avatar, name, error, logged } = props;
 
@@ -17,7 +19,7 @@ function UserRender(props) {
     } else if (avatar) {
       result = (
         <p>
-          <img src={avatar} alt="avatar" />
+          <img className="avatar" src={avatar} alt="avatar" />
         </p>
       );
     }
@@ -36,7 +38,7 @@ function UserRender(props) {
    */
   const renderLoginForm = () => {
     let loginForm = null;
-    if (!logged && showLoginForm) {
+    if (!logged && showLoginForm && !loading) {
       loginForm = <LoginFormRender {...props} />;
     }
 
