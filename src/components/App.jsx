@@ -1,16 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import User from "./user/User";
-import LoginForm from "./user/components/login/components/LoginForm";
+import Header from "./page_elements/components/Header";
 
 function App(props) {
-  console.info(props, "PROPS IN APP");
-  return (
-    <div>
-      <LoginForm {...props} />
-      <User {...props} />
-    </div>
-  );
+  return <Header {...props} />;
 }
 
 export default App;

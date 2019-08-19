@@ -8,6 +8,7 @@ const initialState = {
   name: "",
   avatar: "",
   loading: false,
+  logged: false,
   error: false
 };
 
@@ -17,7 +18,7 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, loading: true };
     case REQUESTED_USER_SUCCEEDED:
       let { name, avatar } = action.payload;
-      return { ...state, loading: false, name, avatar };
+      return { ...state, loading: false, name, avatar, logged: true };
     case REQUESTED_USER_FAILED:
       return { ...state, error: true };
     default:
